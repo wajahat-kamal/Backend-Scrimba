@@ -10,14 +10,13 @@ const server = http.createServer(async (req, res) => {
         res.statusCode = 200;
         res.end(JSON.stringify(destinations))
     } else if (req.url.startsWith("/api/continent") && req.method === "GET") {
-        const continent = req.url.split("/")
-        const cont = continent.pop()
+        const continent = req.url.split("/").pop()
         const con = (await getDataFromDB()).filter((item) => {
-            return item.continent === cont
+            return item.continent === continent.charAt().toUpperCase() + cont.slice(1)
         })
         res.setHeader("Content-Type", "application/json")
         res.statusCode = 200;
-        res.end(con)
+        res.end(JSON.stringify(con))
     }
     else {
         res.setHeader("Content-Type", "application/json")
