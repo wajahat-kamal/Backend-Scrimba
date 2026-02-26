@@ -9,7 +9,17 @@ const server = http.createServer(async (req, res) => {
         res.setHeader("Content-Type", "application/json")
         res.statusCode = 200;
         res.end(JSON.stringify(destinations))
-    } else {
+    } else if (req.url.startsWith("/api/continent") && req.method === "GET") {
+        const continent = req.url.split("/")
+        const cont = continent.pop()
+        const con = (await getDataFromDB()).filter((item) => {
+            return item.continent === cont
+        })
+        res.setHeader("Content-Type", "application/json")
+        res.statusCode = 200;
+        res.end(con)
+    }
+    else {
         res.setHeader("Content-Type", "application/json")
         res.statusCode = 404;
         res.end(JSON.stringify({ error: "not found", message: "The requested route does not exist" }))
