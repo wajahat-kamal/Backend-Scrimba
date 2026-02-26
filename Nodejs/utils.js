@@ -1,6 +1,6 @@
 
 export function sendJSONResponse(res, statusCode, payload) {
-    res.setHeader(header1, header2)
+    res.setHeader("Content-Type", "application/json")
     res.statusCode = statusCode
     res.end(JSON.stringify(payload))
 }
