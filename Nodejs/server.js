@@ -3,10 +3,10 @@ import { getDataFromDB } from "./db.js";
 
 const PORT = 5000;
 
-const server = http.createServer((req, res) => {
-    const destinations = JSON.stringify(getDataFromDB)
+const server = http.createServer(async (req, res) => {
+    const destinations = await getDataFromDB()
     if (req.url === "/api" && req.method === "GET") {
-        res.end(destinations)
+        res.end(JSON.stringify(destinations))
     }
 })
 
