@@ -3,7 +3,7 @@ import http from "node:http"
 const PORT = 8000;
 
 const server = http.createServer((req, res) => {
-    if (req.url === "/api") {
+    if (req.url === "/api" && req.method === "GET") {
         res.end("Hello from the server!")
     }
 })
