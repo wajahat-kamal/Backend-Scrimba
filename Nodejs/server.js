@@ -1,5 +1,5 @@
 import http from "node:http"
-import { getDataFromDB } from "./db";
+import { getDataFromDB } from "./db.js";
 
 const PORT = 8000;
 
