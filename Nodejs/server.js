@@ -1,12 +1,12 @@
 import http from "node:http"
 import { getDataFromDB } from "./db.js";
 
-const PORT = 8000;
+const PORT = 5000;
 
 const server = http.createServer((req, res) => {
+    const destinations = JSON.stringify(getDataFromDB)
     if (req.url === "/api" && req.method === "GET") {
-        const data = JSON.stringify(getDataFromDB)
-        res.end(data)
+        res.end(destinations)
     }
 })
 
