@@ -1,5 +1,6 @@
 import http from "node:http"
 import { getDataFromDB } from "./db.js";
+import { utils } from "./utils.js";
 
 const PORT = 5000;
 
@@ -16,9 +17,7 @@ const server = http.createServer(async (req, res) => {
         const filteredData = destinations.filter((destination) => {
             return destination.continent.toLowerCase() === continent.toLowerCase()
         })
-        res.setHeader("Content-Type", "application/json")
-        res.statusCode = 200;
-        res.end(JSON.stringify(filteredData))
+        utils(res, 200, "Content-Type", "application/json", JSON.stringify(filteredData))
     }
     else {
         res.setHeader("Content-Type", "application/json")
