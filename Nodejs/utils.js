@@ -14,13 +14,14 @@ export function getDataByPathParams(data, locationType, loactionName) {
 export function getDataByQueryParams(data, queryObj) {
     const { country, continent, is_open_to_public } = queryObj;
 
-    if (continent) {
-        return getDataByPathParams(data, "continent", continent)
-    } else if (country) {
-        return getDataByPathParams(data, "country", country)
-    } else if (is_open_to_public) {
-        return data.filter((item) => {
-            return item.is_open_to_public === JSON.parse(is_open_to_public.toLowerCase())
-        })
-    }
+    return data.filter((item) => {
+
+        if (country) {
+            return item.country.toLowerCase() === country.toLowerCase()
+        } else if (continent) {
+            return item.continent.toLowerCase() === continent.toLowerCase()
+        } else if (is_open_to_public) {
+            
+        }
+    })
 }
