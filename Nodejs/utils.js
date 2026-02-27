@@ -11,12 +11,16 @@ export function getDataByPathParams(data, locationType, loactionName) {
     })
 }
 
-export function getDataByQueryParams(data, queryObj){
-    const {country, continent, is_open_to_public} = queryObj;
+export function getDataByQueryParams(data, queryObj) {
+    const { country, continent, is_open_to_public } = queryObj;
 
     if (continent) {
         return getDataByPathParams(data, "continent", continent)
-    } else if(country){
+    } else if (country) {
         return getDataByPathParams(data, "country", country)
+    } else if (is_open_to_public) {
+        return data.filter((item) => {
+            return item.is_open_to_public === is_open_to_public
+        })
     }
 }
