@@ -20,7 +20,7 @@ export function getDataByQueryParams(data, queryObj) {
         return getDataByPathParams(data, "country", country)
     } else if (is_open_to_public) {
         return data.filter((item) => {
-            return item.is_open_to_public === JSON.parse(is_open_to_public)
+            return item.is_open_to_public === JSON.parse(is_open_to_public.toLowerCase())
         })
     }
 }
