@@ -1,6 +1,6 @@
 import http from "node:http"
 import { getDataFromDB } from "./db.js";
-import { getDataByPathParams, sendJSONResponse } from "./utils.js";
+import { getDataByQueryParams, getDataByPathParams, sendJSONResponse } from "./utils.js";
 const PORT = 5000;
 
 const server = http.createServer(async (req, res) => {
@@ -10,11 +10,8 @@ const server = http.createServer(async (req, res) => {
     const queryObj = Object.fromEntries(urlObj.searchParams)
 
     if (urlObj.pathname === "/api" && req.method === "GET") {
-        let filteredDestinations = destinations
-
-        console.log(urlObj);
-
-        sendJSONResponse(res, 200, filteredDestinations)
+        let filteredData = getDataByQueryParams(queryObj, destinations)
+        sendJSONResponse(res, 200, filteredData)
 
     } else if (req.url.startsWith("/api/continent") && req.method === "GET") {
 

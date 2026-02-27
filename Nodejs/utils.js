@@ -10,3 +10,7 @@ export function getDataByPathParams(data, locationType, loactionName) {
         return destination[locationType].toLowerCase() === loactionName.toLowerCase()
     })
 }
+
+export function getDataByQueryParams(queryObj, data){
+
+}
