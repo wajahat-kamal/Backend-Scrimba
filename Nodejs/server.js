@@ -16,7 +16,7 @@ const server = http.createServer(async (req, res) => {
         //     return destination.continent.toLowerCase() === continent.toLowerCase()
         // })
         
-        getDataByPathParams(req.url, destinations, "continent")
+        getDataByPathParams()
         sendJSONResponse(res, 200, filteredData)
     }
     else {

@@ -5,10 +5,8 @@ export function sendJSONResponse(res, statusCode, payload) {
     res.end(JSON.stringify(payload))
 }
 
-export function getDataByPathParams(url, destinations, place) {
-    const con = url.split("/").pop()
-    const filteredData = destinations.filter((destination) => {
-        return destination.place.toLowerCase() === con.toLowerCase()
+export function getDataByPathParams(data, locationType, loactionName) {
+    return data.filter((destination) => {
+        return destination[locationType].toLowerCase() === loactionName.toLowerCase()
     })
-    return filteredData
 }
