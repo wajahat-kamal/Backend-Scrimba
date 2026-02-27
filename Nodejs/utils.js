@@ -15,13 +15,16 @@ export function getDataByQueryParams(data, queryObj) {
     const { country, continent, is_open_to_public } = queryObj;
 
     return data.filter((item) => {
-
+        let match = true
         if (country) {
-            return item.country.toLowerCase() === country.toLowerCase()
-        } else if (continent) {
-            return item.continent.toLowerCase() === continent.toLowerCase()
-        } else if (is_open_to_public) {
-            
+            match = match && item.country.toLowerCase() === country.toLowerCase()
+        } 
+        if (continent) {
+            match = match && item.continent.toLowerCase() === continent.toLowerCase()
+        } 
+        if (is_open_to_public) {
+            match = match && item.is_open_to_public === is_open_to_public.toLowerCase()
         }
+        return match;
     })
 }
