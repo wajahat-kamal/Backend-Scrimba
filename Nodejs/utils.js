@@ -11,6 +11,7 @@ export function getDataByPathParams(data, locationType, loactionName) {
     })
 }
 
-export function getDataByQueryParams(queryObj, data){
-
+export function getDataByQueryParams(data, queryObj){
+    const {country, continent, is_open_to_public} = queryObj;
+    
 }
