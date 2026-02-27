@@ -1,6 +1,6 @@
 import http from "node:http"
 import { getDataFromDB } from "./db.js";
-import { sendJSONResponse } from "./utils.js";
+import { getDataByPathParams, sendJSONResponse } from "./utils.js";
 
 const PORT = 5000;
 
@@ -16,13 +16,7 @@ const server = http.createServer(async (req, res) => {
         //     return destination.continent.toLowerCase() === continent.toLowerCase()
         // })
         
-        function url(url, destinations, place) {
-            const con = url.split("/").pop()
-            const filteredData = destinations.filter((destination) => {
-                return destination.place.toLowerCase() === con.toLowerCase()
-            })
-            return filteredData
-        }
+        getDataByPathParams(req.url, destinations, "continent")
         sendJSONResponse(res, 200, filteredData)
     }
     else {
