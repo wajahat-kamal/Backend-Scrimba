@@ -15,9 +15,8 @@ export function getDataByQueryParams(data, queryObj){
     const {country, continent, is_open_to_public} = queryObj;
 
     if (continent) {
-        let data = getDataByPathParams(data, "continent", continent)
+        return getDataByPathParams(data, "continent", continent)
     } else if(country){
-        let data = getDataByPathParams(data, "country", country)
+        return getDataByPathParams(data, "country", country)
     }
-    return data;
 }
