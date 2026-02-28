@@ -1,7 +1,7 @@
 const form = document.getElementById("eventForm")
 const formMessageText = document.getElementsByClassName("form-message-text")[0]
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const location = document.getElementById("location").value
@@ -37,5 +37,22 @@ form.addEventListener("submit", (e) => {
         text,
         title,
         location,
+    }
+
+    try {
+        formMessageText.textContent = ""
+        const res = await fetch("/api", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+        if (res.ok) {
+            formMessageText.innerHTML = `Your sighting was uploaded. View it <a href="./sightings.html">here</a>.`;
+            form.reset()
+        }
+    } catch (error) {
+        console.log(error);
     }
 })
