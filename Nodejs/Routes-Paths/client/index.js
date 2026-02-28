@@ -1,3 +1,5 @@
+const cardContainer = document.querySelector(".cards-container")
+
 try {
     const data = await fetch("/api")
     const response = await data.json()
@@ -7,7 +9,6 @@ try {
 }
 
 function renderCards(cardsData) {
-    const cardContainer = document.querySelector(".cards-container")
     let cardHTML = ""
 
     cardsData.forEach((card, i) => {
@@ -24,3 +25,7 @@ function renderCards(cardsData) {
     });
     cardContainer.innerHTML = cardHTML
 }
+
+cardContainer.addEventListener("click", () => {
+
+})
