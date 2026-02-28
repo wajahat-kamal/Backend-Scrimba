@@ -26,6 +26,6 @@ function renderCards(cardsData) {
     cardContainer.innerHTML = cardHTML
 }
 
-cardContainer.addEventListener("click", () => {
-
+cardContainer.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("read-more-btn")) return; 
 })
