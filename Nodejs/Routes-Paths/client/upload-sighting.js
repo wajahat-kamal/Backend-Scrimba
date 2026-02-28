@@ -51,8 +51,12 @@ form.addEventListener("submit", async (e) => {
         if (res.ok) {
             formMessageText.innerHTML = `Your sighting was uploaded. View it <a href="./sightings.html">here</a>.`;
             form.reset()
+        } else {
+            formMessageText.innerHTML = `The server Ghosted you(!). Please try again.`
+            console.error("Server Error:", response.statusText)
         }
     } catch (error) {
-        console.log(error);
+        formMessageText.textContent = `Serious ghouls! Please try again.`
+        console.error("Error:", error)
     }
 })
