@@ -28,4 +28,7 @@ function renderCards(cardsData) {
 
 cardContainer.addEventListener("click", (e) => {
     if (!e.target.classList.contains("read-more-btn")) return; 
+    
+    const sightingCard = e.target.closest(".sighting-card")
+    const isExpanded = sightingCard.classList.toggle(".expanded")
 })
