@@ -1,9 +1,6 @@
 import http from "node:http"
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 const PORT = 8000
-
 const __dirname = import.meta.dirname;
 
 const server = http.createServer(async (req, res) => {
