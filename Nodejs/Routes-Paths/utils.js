@@ -1,7 +1,6 @@
 import path from "node:path"
 
-export const serverStatic = (baseDir) => {
+export const serveStatic = (baseDir) => {
     const filePath = path.join(baseDir, "public", "index.html")
-    console.log();
-       
+    console.log(filePath);
 }
